@@ -12,7 +12,7 @@ export const API_URL = process.env.NODE_ENV === 'production' ?  '/api' : '[http:
 
 export const fetchTables = () => {
   return (dispatch) => {
-    fetch('http://localhost:3000/api/tables')
+    fetch('http://localhost:3131/api/tables')
       .then(res => res.json())
       .then(tables => dispatch(updateTables(tables)))
     };
@@ -34,7 +34,7 @@ export const updateSingleTable = tableData => {
       })
     };
 
-    fetch(`http://localhost:3000/api/tables/${tableData.id}`, options)
+    fetch(`http://localhost:3131/tables/${tableData.id}`, options)
       .then(() => dispatch(editTable(tableData)))
   }
 }
