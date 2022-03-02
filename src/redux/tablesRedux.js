@@ -33,8 +33,7 @@ export const updateSingleTable = tableData => {
         bill: tableData.bill
       })
     };
-
-    fetch(API_URL + "/tables", options)
+    fetch(`${API_URL}/tables/${tableData.id}`, options)
       .then(() => dispatch(editTable(tableData)))
   }
 }
