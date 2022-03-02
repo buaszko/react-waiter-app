@@ -5,14 +5,14 @@ const createActionName = name => `app/tables/${name}`;
 const UPDATE_TABLES = createActionName('UPDATE_TABLES')
 const EDIT_TABLE = createActionName('EDIT_TABLE')
 
-export const updateTables = payload => ({ type: UPDATE_TABLES, payload });
+export const updateTables = payload => ({ type: UPDATE_TABLES, payload }) ;
 export const editTable = payload => ({ type: EDIT_TABLE, payload });
 
-export const API_URL = process.env.NODE_ENV === 'production' ?  '/api' : '[http://localhost:3000/api](http://localhost:3000/api)';
+export const API_URL = process.env.NODE_ENV === "production" ? "/api" : "http://localhost:3131/api";
 
 export const fetchTables = () => {
   return (dispatch) => {
-    fetch('http://localhost:3131/api/tables')
+    fetch(API_URL + "/tables")
       .then(res => res.json())
       .then(tables => dispatch(updateTables(tables)))
     };
@@ -34,7 +34,7 @@ export const updateSingleTable = tableData => {
       })
     };
 
-    fetch(`http://localhost:3131/tables/${tableData.id}`, options)
+    fetch(API_URL + "/tables", options)
       .then(() => dispatch(editTable(tableData)))
   }
 }
